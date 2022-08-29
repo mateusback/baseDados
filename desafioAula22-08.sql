@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS projetoAula;
-CREATE DATABASE projetoAula;
+DROP DATABASE IF EXISTS projeto_aula;
+CREATE DATABASE projeto_aula;
 
-USE projetoAula;
+USE projeto_aula;
