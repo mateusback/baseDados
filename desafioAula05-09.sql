@@ -120,43 +120,56 @@ VALUES	('2K', '2K é uma publicadora de jogos eletrônicos estadunidense baseada
 
 -- INSERINDO JOGOS
 INSERT INTO jogo(nome,produtora_id,distribuidora_id,ano_publicacao,descricao,media_notas,media_tempo) 
-VALUES	('Spider-Man', '2','1','2018','Spider-Man é um jogo eletrônico de ação-aventura desenvolvido pela Insomniac Games e publicado pela Sony Interactive Entertainment.','4.5','18.00'); 
+VALUES	('Spider-Man', 2,1,'2018','Spider-Man é um jogo eletrônico de ação-aventura desenvolvido pela Insomniac Games e publicado pela Sony Interactive Entertainment.','4.5','18.00'); 
 INSERT INTO jogo(nome,produtora_id,distribuidora_id,ano_publicacao,descricao,media_notas,media_tempo) 
-VALUES	('Borderlands 3', '1','3','2019','Borderlands 3 é um jogo eletrônico de RPG de ação desenvolvido pela Gearbox Software e publicado pela 2K Games. É a sequência de Borderlands 2 e o quarto título principal da série Borderlands','4.3','60.30');
+VALUES	('Borderlands 3', 1,3,'2019','Borderlands 3 é um jogo eletrônico de RPG de ação desenvolvido pela Gearbox Software e publicado pela 2K Games. É a sequência de Borderlands 2 e o quarto título principal da série Borderlands','4.3','60.30');
 INSERT INTO jogo(nome,produtora_id,distribuidora_id,ano_publicacao,descricao,media_notas,media_tempo) 
-VALUES	('Forza Horizon 5', '1','1','2021','Forza Horizon 5 é um jogo eletrônico de corrida desenvolvido pela Playground Games e publicado pela Xbox Game Studios. É o quinto jogo da série Forza Horizon e o décimo segundo título principal da franquia Forza. O jogo se passa em uma representação ficcional do México.','4.8','30.00');
+VALUES	('Forza Horizon 5', 1,1,'2021','Forza Horizon 5 é um jogo eletrônico de corrida desenvolvido pela Playground Games e publicado pela Xbox Game Studios. É o quinto jogo da série Forza Horizon e o décimo segundo título principal da franquia Forza. O jogo se passa em uma representação ficcional do México.','4.8','30.00');
 
 -- INSERINDO PLANO
 INSERT INTO plano(tipo,beneficios)
-VALUES ('','');
+VALUES ('Normal','Nenhum');
 INSERT INTO plano(tipo,beneficios)
-VALUES ('','');
+VALUES ('Pro','Sem anuncios e estatisticas personalizadas');
 INSERT INTO plano(tipo,beneficios)
-VALUES ('','');
+VALUES ('VIP','Sem anuncios, estatisticas personalizadas, acessao a noticias, imagem de fundo do perfil personalidade e mais');
 
 -- INSERINDO USUÁRIOS
 INSERT INTO usuario(nick,nome,email,senha,descricao,plano_id)
-VALUES('','','','','','');
+VALUES('aortaluis','Luís','veda_cremin@yahoo.com','1yH31@',NULL,1);
 INSERT INTO usuario(nick,nome,email,senha,descricao,plano_id)
-VALUES('','','','','','');
+VALUES('jourgelio','Mateus','maximus.nikolaus@yahoo.com','W53w5M^39$3','Olá, estou usando este aplicativo!',3);
 INSERT INTO usuario(nick,nome,email,senha,descricao,adminstrador,plano_id) -- INSERINDO UM ADMINSTRADOR
-VALUES('','','','','','','');
+VALUES('tsaslalom','Diana','alycia_smith@yahoo.com','WX&35r$5e4uCc1Yx','Always trust computer games.','',2);
+
+-- INSERINDO FORMAS DE PAGAMENTOS
+INSERT INTO fpagamento(descricao,duracao_plano)
+VALUES('Cartão de credito','1 mês');
+INSERT INTO fpagamento(descricao,duracao_plano)
+VALUES('Cartão de credito','3 meses');
+INSERT INTO fpagamento(descricao,duracao_plano)
+VALUES('Cartão de credito','1 ano');
+INSERT INTO fpagamento(descricao,duracao_plano)
+VALUES('PIX','1 meses');
+INSERT INTO fpagamento(descricao,duracao_plano)
+VALUES('PIX','3 meses');
+INSERT INTO fpagamento(descricao,duracao_plano)
+VALUES('PIX','1 Ano');
 
 -- INSERINDO VENDAS
 INSERT INTO venda(usuario_id,fpagamento_id,total_decimal)
-VALUES ('','','');
+VALUES (2,3,'180,00');
 INSERT INTO venda(usuario_id,fpagamento_id,total_decimal)
-VALUES ('','','');
-INSERT INTO venda(usuario_id,fpagamento_id,total_decimal)
-VALUES ('','','');
+VALUES (3,4,'60,00');
+
 
 -- INSERINDO ANÁLISE
 INSERT INTO analise(usuario_id,jogo_id,review,tempo_jogo,nota)
-VALUES ('','','','','');
+VALUES ('1','3','Vrum Vrum','65:30:00',10);
 INSERT INTO analise(usuario_id,jogo_id,review,tempo_jogo,nota)
-VALUES ('','','','','');
+VALUES ('2','2','Loot shooter perdido no tempo','36:10:10',7);
 INSERT INTO analise(usuario_id,jogo_id,review,tempo_jogo,nota)
-VALUES ('','','','','');
+VALUES ('3','1','O amigão da vizinhança brilhou','19:26:01',9);
 
 -- INSERINDO LISTAS
 INSERT INTO lista(nome,usuario_id,analise_id,descrição,comentario_item)
