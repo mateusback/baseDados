@@ -89,17 +89,16 @@ id INT NOT NULL AUTO_INCREMENT
 ,CONSTRAINT nota_valida CHECK(nota<=10 AND nota>=0)
 );
 
-CREATE TABLE lista(
+CREATE TABLE lista_de_preferencia(
 id INT NOT NULL AUTO_INCREMENT
 ,nome VARCHAR(100) NOT NULL
 ,usuario_id INT NOT NULL
-,analise_id INT NOT NULL
+,jogo_id INT NOT NULL
 ,descrição TEXT
 ,comentario_item TEXT
 ,CONSTRAINT pk_lista PRIMARY KEY (id)
 ,CONSTRAINT fk_lista_usuario FOREIGN KEY (usuario_id) REFERENCES usuario (id)
-,CONSTRAINT fk_lista_analise FOREIGN KEY (analise_id) REFERENCES usuario (id)
-,CONSTRAINT lista_unica UNIQUE(nome, usuario_id)
+,CONSTRAINT fk_lista_jogo FOREIGN KEY (jogo_id) REFERENCES jogo (id)
 );
 
 -- INSERINDO PRODUTORAS
@@ -172,12 +171,12 @@ INSERT INTO analise(usuario_id,jogo_id,review,tempo_jogo,nota)
 VALUES ('3','1','O amigão da vizinhança brilhou','19:26:01',9);
 
 -- INSERINDO LISTAS
-INSERT INTO lista(nome,usuario_id,analise_id,descrição,comentario_item)
-VALUES ('','','','','');
-INSERT INTO lista(nome,usuario_id,analise_id,descrição,comentario_item)
-VALUES ('','','','','');
-INSERT INTO lista(nome,usuario_id,analise_id,descrição,comentario_item)
-VALUES ('','','','','');
+INSERT INTO lista_de_preferencia(nome,usuario_id,jogo_id,descrição,comentario_item)
+VALUES ('Melhores jogos 2020',1,1,NULL,NULL);
+INSERT INTO lista_de_preferencia(nome,usuario_id,jogo_id,descrição,comentario_item)
+VALUES ('Melhores jogos 2020',1,2,NULL,NULL);
+INSERT INTO lista_de_preferencia(nome,usuario_id,jogo_id,descrição,comentario_item)
+VALUES ('Melhores jogos 2020',1,3,NULL,NULL);
 
 -- Consulta Produtoras
 SELECT
@@ -231,4 +230,4 @@ FROM
 SELECT
 	*
 FROM 
-	lista;
+	lista_de_preferencia;
