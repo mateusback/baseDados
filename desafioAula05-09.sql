@@ -25,6 +25,8 @@ id INT NOT NULL AUTO_INCREMENT
 ,distribuidora_id INT NOT NULL
 ,ano_publicacao CHAR(4) NOT NULL
 ,descricao TEXT
+,genero VARCHAR(45) NOT NULL
+,plataforma VARCHAR(45) NOT NULL
 ,media_notas DOUBLE
 ,media_tempo DOUBLE
 ,ativo ENUM('S','N') NOT NULL DEFAULT 'S'
@@ -83,6 +85,7 @@ id INT NOT NULL AUTO_INCREMENT
 ,review TEXT
 ,tempo_jogo TIME NOT NULL DEFAULT '00:00:00'
 ,nota INT NOT NULL
+,data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ,CONSTRAINT pk_analise PRIMARY KEY (id)
 ,CONSTRAINT fk_analise_usuario FOREIGN KEY (usuario_id) REFERENCES usuario (id)
 ,CONSTRAINT fk_analise_jogo FOREIGN KEY (jogo_id) REFERENCES jogo (id)
