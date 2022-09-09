@@ -39,7 +39,7 @@ id INT NOT NULL AUTO_INCREMENT
 CREATE TABLE plano(
 id INT NOT NULL AUTO_INCREMENT
 ,tipo VARCHAR(15) NOT NULL
-,beneficios VARCHAR(100) NOT NULL
+,beneficios VARCHAR(200) NOT NULL
 ,CONSTRAINT pk_plano PRIMARY KEY (id)
 );
 
@@ -60,7 +60,7 @@ id INT NOT NULL AUTO_INCREMENT
 CREATE TABLE fpagamento(
 id INT NOT NULL AUTO_INCREMENT
 ,descricao VARCHAR (100) NOT NULL
-,duracao_plano INT NOT NULL
+,duracao_plano VARCHAR(50) NOT NULL
 ,entrada ENUM('S','N') NOT NULL DEFAULT 'N'
 ,ativo ENUM('S','N') NOT NULL DEFAULT 'S'
 ,data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -121,12 +121,12 @@ INSERT INTO distribuidora(nome,descrição,ativo)
 VALUES	('2K', '2K é uma publicadora de jogos eletrônicos estadunidense baseada em Novato, Califórnia. A 2K foi fundada pela Take-Two Interactive em Janeiro de 2005 por meio das empresas 2K Games e 2K Sports, seguindo a aquisição pela Take-Two de uma empresa chamada Visual Concepts naquele mesmo mês.','S');
 
 -- INSERINDO JOGOS
-INSERT INTO jogo(nome,produtora_id,distribuidora_id,ano_publicacao,descricao,media_notas,media_tempo) 
-VALUES	('Spider-Man', 2,1,'2018','Spider-Man é um jogo eletrônico de ação-aventura desenvolvido pela Insomniac Games e publicado pela Sony Interactive Entertainment.','4.5','18.00'); 
-INSERT INTO jogo(nome,produtora_id,distribuidora_id,ano_publicacao,descricao,media_notas,media_tempo) 
-VALUES	('Borderlands 3', 1,3,'2019','Borderlands 3 é um jogo eletrônico de RPG de ação desenvolvido pela Gearbox Software e publicado pela 2K Games. É a sequência de Borderlands 2 e o quarto título principal da série Borderlands','4.3','60.30');
-INSERT INTO jogo(nome,produtora_id,distribuidora_id,ano_publicacao,descricao,media_notas,media_tempo) 
-VALUES	('Forza Horizon 5', 1,1,'2021','Forza Horizon 5 é um jogo eletrônico de corrida desenvolvido pela Playground Games e publicado pela Xbox Game Studios. É o quinto jogo da série Forza Horizon e o décimo segundo título principal da franquia Forza. O jogo se passa em uma representação ficcional do México.','4.8','30.00');
+INSERT INTO jogo(nome,produtora_id,distribuidora_id,ano_publicacao,descricao,genero,plataforma,media_notas,media_tempo) 
+VALUES	('Spider-Man', 2,1,'2018','Spider-Man é um jogo eletrônico de ação-aventura desenvolvido pela Insomniac Games e publicado pela Sony Interactive Entertainment.','Aventura','PS5','4.5','18.00'); 
+INSERT INTO jogo(nome,produtora_id,distribuidora_id,ano_publicacao,descricao,genero,plataforma,media_notas,media_tempo) 
+VALUES	('Borderlands 3', 1,3,'2019','Borderlands 3 é um jogo eletrônico de RPG de ação desenvolvido pela Gearbox Software e publicado pela 2K Games. É a sequência de Borderlands 2 e o quarto título principal da série Borderlands','Ação','PC','4.3','60.30');
+INSERT INTO jogo(nome,produtora_id,distribuidora_id,ano_publicacao,descricao,genero,plataforma,media_notas,media_tempo) 
+VALUES	('Forza Horizon 5', 3,2,'2021','Forza Horizon 5 é um jogo eletrônico de corrida desenvolvido pela Playground Games e publicado pela Xbox Game Studios. É o quinto jogo da série Forza Horizon e o décimo segundo título principal da franquia Forza. O jogo se passa em uma representação ficcional do México.','Corrida','Xbox Series X','4.8','30.00');
 
 -- INSERINDO PLANO
 INSERT INTO plano(tipo,beneficios)
@@ -142,7 +142,7 @@ VALUES('aortaluis','Luís','veda_cremin@yahoo.com','1yH31@',NULL,1);
 INSERT INTO usuario(nick,nome,email,senha,descricao,plano_id)
 VALUES('jourgelio','Mateus','maximus.nikolaus@yahoo.com','W53w5M^39$3','Olá, estou usando este aplicativo!',3);
 INSERT INTO usuario(nick,nome,email,senha,descricao,adminstrador,plano_id) -- INSERINDO UM ADMINSTRADOR
-VALUES('tsaslalom','Diana','alycia_smith@yahoo.com','WX&35r$5e4uCc1Yx','Always trust computer games.','',2);
+VALUES('tsaslalom','Diana','alycia_smith@yahoo.com','WX&35r$5e4uCc1Yx','Always trust computer games.','S',2);
 
 -- INSERINDO FORMAS DE PAGAMENTOS
 INSERT INTO fpagamento(descricao,duracao_plano)
@@ -160,18 +160,18 @@ VALUES('PIX','1 Ano');
 
 -- INSERINDO VENDAS
 INSERT INTO venda(usuario_id,fpagamento_id,total_decimal)
-VALUES (2,3,'180,00');
+VALUES (2,3,180.00);
 INSERT INTO venda(usuario_id,fpagamento_id,total_decimal)
-VALUES (3,4,'60,00');
+VALUES (3,4,60.00);
 
 
 -- INSERINDO ANÁLISE
-INSERT INTO analise(usuario_id,jogo_id,review,tempo_jogo,nota)
-VALUES ('1','3','Vrum Vrum','65:30:00',10);
-INSERT INTO analise(usuario_id,jogo_id,review,tempo_jogo,nota)
-VALUES ('2','2','Loot shooter perdido no tempo','36:10:10',7);
-INSERT INTO analise(usuario_id,jogo_id,review,tempo_jogo,nota)
-VALUES ('3','1','O amigão da vizinhança brilhou','19:26:01',9);
+INSERT INTO analise(usuario_id,jogo_id,review,tempo_jogo,nota,data_cadastro)
+VALUES ('1','3','Vrum Vrum','65:30:00',10,'2019-09-10');
+INSERT INTO analise(usuario_id,jogo_id,review,tempo_jogo,nota,data_cadastro)
+VALUES ('2','2','Loot shooter perdido no tempo','36:10:10',7,'2021-12-14');
+INSERT INTO analise(usuario_id,jogo_id,review,tempo_jogo,nota,data_cadastro)
+VALUES ('3','1','O amigão da vizinhança brilhou','19:26:01',9,'2022-08-09');
 
 -- INSERINDO LISTAS
 INSERT INTO lista_de_preferencia(nome,usuario_id,jogo_id,descrição,comentario_item)
